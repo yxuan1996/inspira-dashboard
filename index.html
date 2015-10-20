@@ -1,1 +1,175 @@
-Hello World
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type="text/css">
+    #bg {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+    }
+
+    #bg img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      min-width: 50%;
+      min-height: 50%;
+    }
+
+    #tick {
+      position: absolute;
+      top: 40%;
+      left: 35%;
+      width: 800px;
+      height: 400px;
+      font-family: Arial, sans-serif;
+      font-size: 150px;
+      color: white;
+    }
+
+    #displayquote {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 42px;
+      font-style: normal;
+      font-variant: normal;
+      line-height: 36px;
+      color: white;
+    }
+
+    .made{
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-variant: normal;
+      line-height: 6px;
+      color: white;
+    }
+  </style>
+
+  <script type='text/javascript'>
+    var imageID = 1;
+
+    function changeimage(every_seconds) {
+      //change the image
+      switch (imageID) {
+        case 1:
+          document.getElementById("myimage").src = "img/1.jpg";
+          document.getElementById("displayquote").innerHTML = "Rowena ravenclaw- wit beyond measure is man's greatest treasure.";
+          imageID++;
+          break;
+        case 2:
+          document.getElementById("myimage").src = "img/2.jpg";
+          document.getElementById("displayquote").innerHTML = "Mahatma Gandhi- Live as if you were to die tomorrow. Learn as if you were to live forever.";
+          imageID++;
+          break;
+        case 3:
+          document.getElementById("myimage").src = "img/3.jpg";
+          document.getElementById("displayquote").innerHTML = "Martin Luther King, Jr.- The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy.";
+          imageID++;
+        case 4:
+          document.getElementById("myimage").src = "img/4.jpg";
+          document.getElementById("displayquote").innerHTML = "Vince lombardi- perfection is not attainable, but if we chase perfection we can catch excellence.";
+          imageID++;
+          break;
+        case 5:
+          document.getElementById("myimage").src = "img/5.jpg";
+          document.getElementById("displayquote").innerHTML = "Karen Lamb- A year from now you may wish you had started today.";
+          imageID++;
+          break;
+        case 6:
+          document.getElementById("myimage").src = "img/6.jpg";
+          document.getElementById("displayquote").innerHTML = "Never let your fear decide your fate. ";
+          imageID++;
+          break;
+        case 7:
+          document.getElementById("myimage").src = "img/7.jpg";
+          document.getElementById("displayquote").innerHTML = "Plutarch- the mind is not a vessel to be filled but a fire to be kindled.";
+          imageID++;
+          break;
+        case 8:
+          document.getElementById("myimage").src = "img/8.jpg";
+          document.getElementById("displayquote").innerHTML = "Arthur Ashe- Start where you are. Use what you have. Do what you can.";
+          imageID++;
+          break;
+        case 9:
+          document.getElementById("myimage").src = "img/9.jpg";
+          document.getElementById("displayquote").innerHTML = "A set of fingerprints. This could be dangerous if it gets into the wrong 'hands'. They could have a lot of information on their 'fingertips'.";
+          imageID = 1;
+          break;
+      }
+      //call same function again for x of seconds
+      setTimeout("changeimage(" + every_seconds + ")", ((every_seconds) * 1000));
+    }
+    var quotes = ["Shepard", "Liara", "Tali"];
+
+    var d, h, m, s, animate;
+
+    function init() {
+      d = new Date();
+      h = d.getHours();
+      m = d.getMinutes();
+      s = d.getSeconds();
+      clock();
+    };
+
+    function clock() {
+      s++;
+      if (s == 60) {
+        s = 0;
+        m++;
+      }
+      if (m == 60) {
+        m = 0;
+        h++;
+      }
+      if (h == 24) {
+        h = 0;
+      }
+      $('sec', s);
+      $('min', m);
+      $('hr', h);
+      animate = setTimeout(clock, 1000);
+    };
+
+    function $(id, val) {
+      if (val < 10) {
+        val = '0' + val;
+      }
+      document.getElementById(id).innerHTML = val;
+    };
+    window.onload = init;
+  </script>
+</head>
+
+<body onload='changeimage(50)'>
+  <div id="bg">
+    <img width='100%' height='100%' id='myimage' src='img/1.jpg' />
+    <center>
+      <div id='tick' class="clock">
+        <span id="hr">00</span>
+        <span> : </span>
+        <span id="min">00</span>
+        <span> : </span>
+        <span id="sec">00</span>
+
+        <h4 id="displayquote"></h4>
+        <h5 class="made">Made by Sim, Inspired by Momentum</h5>
+
+      </div>
+    </center>
+  </div>
+
+</body>
+
+</html>
+<!-- code sources
+http://www.dyclassroom.com/web-project/html5-how-to-create-a-simple-clock-using-javascript
+https://css-tricks.com/perfect-full-page-background-image/
+http://stackoverflow.com/questions/13495186/html5-change-background-image-interval-time
+-->
